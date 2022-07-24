@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+### Tags
+
+Tag.create!([
+  { name: "Vegetarian" },
+  { name: "Vegan" },
+  { name: "Mexican" },
+  { name: "Colombian" },
+  { name: "American" },
+  { name: "Spicy" },
+  { name: "Thai" },
+  { name: "Healthy" },
+  { name: "Italian" },
+  { name: "Middle Eastern" },
+  { name: "English" },
+  { name: "Indian" },
+  { name: "Korean" },
+  { name: "Chinese" },
+  { name: "Japanese" },
+  { name: "Greek" },
+  { name: "French" },
+  { name: "Carribean" },
+  { name: "Spanish" },
+])

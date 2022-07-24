@@ -6,7 +6,13 @@ class BooksController < ApplicationController
   end
 
   def index
-    render json: Book.all
+    render json: Book.all.order(:title)
+  end
+
+  def show
+    book = Book.find_by(id: params[:id])
+    return render json: { error: "Book doesn't exist."}, status: :unprocessable_entity if book.nil?
+    render json: book.serialize
   end
 
   private
