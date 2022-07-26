@@ -32,3 +32,4 @@
 
 # Ignore stuff in public directory, like uploads
 /public/*
+.env
