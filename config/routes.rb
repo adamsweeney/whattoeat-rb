@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :tags, only: [:index]
-  resources :recipes, only: [:create] do
+  resources :recipes, only: [:create, :index] do
     collection do
       get :random
     end

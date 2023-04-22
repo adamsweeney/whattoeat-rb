@@ -23,10 +23,20 @@ class RecipesController < ApplicationController
     render json: meals
   end
 
+  def index
+    @recipes = Recipe.filter(filter_params)
+    @recipes = @recipes.order(:name).paginate(page: params[:page], per_page: 15)
+    render json: RecipeSerializer.new(@recipes, { meta: metadata(@recipes) }).serializable_hash 
+  end
+
   private
 
   def recipe_params
     params.permit(:page, :name, :image)
+  end
+
+  def filter_params
+    params.permit(:cook_time, :prep_time, :book, :calories, :meal_type)
   end
 
   def recipe_detail_params

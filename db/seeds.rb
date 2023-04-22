@@ -30,5 +30,7 @@ Tag.create!([
   { name: "Spanish" },
   { name: "German" },
   { name: "Polish" },
-  { name: "Swiss" }
+  { name: "Swiss" },
+  { name: "Breakfast" },
+  { name: "Canadian" }
 ])

@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
   mount_uploader :image, ImageUploader
+
   belongs_to :book
 
   has_one :recipe_detail
@@ -20,6 +21,17 @@ class Recipe < ApplicationRecord
   }
 
   scope :desserts, -> { joins(:recipe_detail).where(recipe_details: { meal_type: "dessert" }) }
+
+  def self.filter(params)
+    recipes = self.all.joins(:recipe_detail)
+
+    recipes = recipes.where("recipe_details.cook_time BETWEEN ? and ?", *params[:cook_time].split("-")) if params[:cook_time].present?
+    recipes = recipes.where("recipe_details.prep_time BETWEEN ? and ?", *params[:prep_time].split("-")) if params[:prep_time].present?
+    recipes = recipes.where("recipe_details.calories BETWEEN ? and ?", *params[:calories].split("-")) if params[:calories].present?
+    recipes = recipes.where(book_id: params[:book]) if params[:book].present?
+    recipes = recipes.where(recipe_details: { meal_type: params[:meal_type] }) if params[:meal_type].present?
+    recipes
+  end
 
   def serialize
     {

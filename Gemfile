@@ -21,6 +21,9 @@ gem 'rack-cors'
 gem "fog-aws"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+# Pagination
+gem 'will_paginate', '~> 3.3'
+gem 'jsonapi-serializer'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
